@@ -1,5 +1,4 @@
-<?php ?>
-<section class="bg-secondary about-section text-center" id="about">
+<section class="bg-secondary about-section text-center mt-5 mb-5" id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -12,7 +11,7 @@
         </div>
     </div>
 </section>
-<footer class="footer bg-dark text-center">
+<footer class="footer text-center">
     <div class="social d-flex justify-content-center">
         <a class="mx-2 h2" href="https://twitter.com/GironeRemi"><i class="fab fa-twitter" target="_blank"></i></a>
         <a class="mx-2 h2" href="http://fr.linkedin.com/in/remigirone?trk=profile-badge-cta"><i class="fab fa-linkedin" target="_blank"></i></a>
