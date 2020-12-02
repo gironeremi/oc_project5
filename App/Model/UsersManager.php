@@ -9,7 +9,7 @@ class UsersManager extends Manager
         $req->execute(array($username));
         return $req->fetch();
     }
-    public function getMemberByEmail($email)
+    public function getUserByEmail($email)
     {
         $db = $this->getDbConnect();
         $req = $db->prepare('SELECT * FROM users WHERE email = ?');
@@ -21,7 +21,6 @@ class UsersManager extends Manager
         $db = $this->getDbConnect();
         $req = $db->prepare('INSERT INTO users SET username = ?, password = ?, email = ?');
         $req->execute(array($username, $passwordHashed, $email));
-        //return $req->fetch();
     }
     /*faire une méthode listUsers pour ajouter les utilisateurs à la liste des joueurs/ses ?.*/
 }

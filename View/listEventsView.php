@@ -2,15 +2,20 @@
 <?php ob_start(); ?>
     <h2>Évènements à venir</h2>
     <div class="d-md-flex justify-content-around">
-        <div class="card col-md-5 col-sm-10">
-            <div class="card-body">
-                <h4 class="card-title">La forêt hantée enchantée en chantier</h4>
-                <h6 class="card-subtitle mb-2 text-muted">Appel de Cthulhu</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
+        <?php
+        foreach ($events as $event)
+        {
+        ?>
+            <div class="card col-md-5 col-sm-10">
+                    <div class="card-body">
+                        <h4 class="card-title"><?= $event['eventName'] ?></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><?= $event['eventDate'] ?></h6>
+                        <p class="card-text"><?= $event['informations'] ?></p>
+                    </div>
+                </div>
+        <?php
+        }
+        ?>
     </div>
 <!--    <nav>
         <ul class="pagination">
