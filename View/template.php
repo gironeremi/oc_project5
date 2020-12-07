@@ -9,7 +9,7 @@
         if (!empty($title)) {
             echo $title;
         } else {
-            echo 'Jean Forteroche';
+            echo 'RMTJ: club de JDR à Antibes';
         }?></title>
     <link href="../public/css/bootstrap.min.css" rel="stylesheet" />
 </head>

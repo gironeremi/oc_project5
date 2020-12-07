@@ -27,8 +27,14 @@ try {
         case 'logout':
             $usersController->logout();
             break;
+        case 'getEventEditor':
+            $eventsController->getEventEditor();
+            break;
+        case 'addEvent':
+            $eventsController->addEvent();
+            break;
         default:
-            $eventsController->listEvents();
+            $controller->home();
     }
 }
 catch(Exception $e) {

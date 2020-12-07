@@ -1,5 +1,7 @@
 <?php
 namespace App\Controller;
+use App\Model\GamesManager;
+
 class Controller
 {
     public function cleanVar($str)
@@ -9,5 +11,11 @@ class Controller
         } else {
             return "";
         }
+    }
+    public function home()
+    {
+        $gamesManager = new GamesManager();
+        $games = $gamesManager->listGames();
+        require('View/homeView.php');
     }
 }

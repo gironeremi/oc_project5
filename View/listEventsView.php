@@ -1,17 +1,27 @@
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
-    <h2>Évènements à venir</h2>
-    <div class="d-md-flex justify-content-around">
+    <h1>Évènements à venir</h1>
+    <div class="">
         <?php
         foreach ($events as $event)
         {
         ?>
-            <div class="card col-md-5 col-sm-10">
-                    <div class="card-body">
-                        <h4 class="card-title"><?= $event['eventName'] ?></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><?= $event['eventDate'] ?></h6>
-                        <p class="card-text"><?= $event['informations'] ?></p>
-                    </div>
+            <div class="card m-5">
+                <div class="card-header">
+                    <h2 class="card-title"><?= $event['eventName'] ?> - <?= $event['gameName']?></h2>
+                    <h5 class="card-subtitle mb-2 text-muted"><?= $event['eventDate'] ?> <br />
+                        Organisé par <?= $event['username']?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><?= $event['informations'] ?></p>
+                </div>
+                <div class="card-footer">
+                    <p>Participants:</p>
+                    <ul class="list-group">
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
                 </div>
         <?php
         }
@@ -36,4 +46,4 @@
     </nav>
     -->
 <?php $content = ob_get_clean();
-require('template.php'); ?><?php
+require('template.php'); ?>

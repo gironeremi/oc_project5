@@ -7,9 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Séances</a>
+                <a class="nav-link" href="index.php?action=listEvents">Prochaines Séances</a>
             </li>
-<!-- -->
             <?php
                 if (isset($_SESSION['username']))
             {?>
@@ -17,6 +16,9 @@
             <li class="nav nav-item">
                 <a href="index.php?action=logout" class="nav-link">Déconnexion</a>
             </li>
+                <li class="nav nav-item">
+                    <a href="index.php?action=getEventEditor" class="nav-link">Créer une séance</a>
+                </li>
             <?php }
                 else {
             ?>
@@ -26,20 +28,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=register">Inscription</a>
             </li>
-        <?php } ?>
-
-            <!--
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" wfd-invisible="true">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </li>
-            -->
+            <?php }
+            ?>
         </ul>
     </div>
 </nav>
@@ -51,4 +41,3 @@
     </div>
 <?php }
 ?>
-<img src="/public/images/logo.png" alt="logo RMTJ" class="img-fluid col-lg-2"/>
