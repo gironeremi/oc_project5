@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Model\EventsManager;
 use App\Model\UsersManager;
 
 class UsersController extends Controller
@@ -59,7 +60,8 @@ class UsersController extends Controller
                 $_SESSION['username'] = $username;
                 $_SESSION['userId'] = $userExists['user_id'];
                 $successMessage = 'Vous êtes connecté. Bienvenue ' . $username . " !";
-                require('View/template.php');
+                //require('View/template.php');//remplacer par la méthode userDashboard()
+                $this->userDashboard();
                 die();
             }
         }
@@ -69,7 +71,16 @@ class UsersController extends Controller
     {
         session_destroy();
         unset($_SESSION['username']);
+        unset($_SESSION['userId']);
         $successMessage = "Vous êtes bien déconnecté.";
         require('View/template.php');
+    }
+    public function userDashboard()
+    {
+        //$username = $_SESSION['username'];
+        $userId = $_SESSION['userId'];
+        $eventsManager = new EventsManager();
+        $events = $eventsManager->listEventsById($userId);
+        require('View/userDashboardView.php');
     }
 }

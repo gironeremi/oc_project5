@@ -13,16 +13,20 @@
                         Organisé par <?= $event['username']?>
                     </h5>
                 </div>
+                <!--
                 <div class="card-body">
                     <p class="card-text"><?= $event['informations'] ?></p>
                 </div>
                 <div class="card-footer">
                     <p>Participants:</p>
                     <ul class="list-group">
-                        <li class="list-group-item"></li>
-                    </ul>
+                        <li class="list-group-item">liste ici même</li>
+                    </ul>-->
+                <div>
+                    <a href="index.php?action=getEventById&event_id=<?= $event['event_id'] ?>" class="btn btn-primary m-2">En savoir plus</a>
                 </div>
-                </div>
+            </div>
+    </div>
         <?php
         }
         ?>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
     <a class="navbar-brand" href="index.php">RMTJ</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" wfd-invisible="true">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,10 @@
             <?php
                 if (isset($_SESSION['username']))
             {?>
-            <li class="nav nav-item nav-link">Salut <?= $_SESSION['username'] ?> !</li>
+            <li class="nav nav-item">
+                <a href="index.php?action=userDashboard" class="nav-link">
+                    Salut <?= $_SESSION['username'] ?> !</a>
+            </li>
             <li class="nav nav-item">
                 <a href="index.php?action=logout" class="nav-link">Déconnexion</a>
             </li>

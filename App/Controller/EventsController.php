@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Model\CommentsManager;
 use App\Model\EventsManager;
 use App\Model\GamesManager;
 
@@ -10,6 +11,17 @@ class EventsController extends Controller
         $eventsManager = new EventsManager();
         $events = $eventsManager->listEvents();
         require('View/listEventsView.php');
+    }
+    public function getEventById()
+    {
+        $eventId = intval($_GET['event_id']);
+        if (is_int($eventId)) {
+            $eventsManager = new EventsManager();
+            $commentsManager = new CommentsManager();
+            $event = $eventsManager->getEventById($eventId);
+            $comments = $commentsManager->listComments($eventId);
+            require('View/eventView.php');
+        }
     }
     public function getEventEditor()
     {
@@ -40,8 +52,10 @@ class EventsController extends Controller
             if ($affectedLines === false) {
                 throw new \Exception('impossible d\'ajouter cette aventure');
             } else {
-                $successMessage = "Bravo! Votre séance est fixée!";
+                $successMessage = "Bravo! Votre séance est fixée! ";
                 require('View/template.php');
+                //$usersController = new UsersController();
+                //$usersController->userDashboard();
             }
         }
 
@@ -58,8 +72,9 @@ class EventsController extends Controller
         } else {
             $adminManager = new AdminManager();
             $adminManager->updatePost($postId, $postTitle, $postContent, $postPublishDate);
-            $successMessage = 'Le chapitre a été mis à jour!';
-            require('View/template.php');
+            $successMessage = 'La séance a été mise à jour. Cool!';
+            $usersController = new UsersController();
+            $usersController->userDashboard();
         }
     }
     //à modifier, bien entendu

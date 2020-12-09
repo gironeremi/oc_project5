@@ -11,6 +11,23 @@ INNER JOIN games ON events.game_id = games.game_id');
         $req->execute();
         return $req;
     }
+    public function listEventsById($userId)
+    {
+        $db = $this->getDbConnect();
+        //joindre dans la requête SQL les bonnes informations
+        $events = $db->prepare('SELECT * FROM events INNER JOIN users ON events.user_id = users.user_id
+INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ?');
+        $events->execute(array($userId));
+        return $events->fetchAll();
+    }
+    public function getEventById($eventId)
+    {
+        $db = $this->getDbConnect();
+        $req = $db->prepare('SELECT * FROM events INNER JOIN users ON events.user_id = users.user_id
+INNER JOIN games ON events.game_id = games.game_id WHERE events.event_id = ?');
+        $req->execute(array($eventId));
+        return $req->fetch();
+    }
     public function addEvent($eventName, $userId, $gameId, $eventInformations, $eventDate)
     {
         $db = $this->getDbConnect();
