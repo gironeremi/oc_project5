@@ -25,17 +25,15 @@ class EventsController extends Controller
     }
     public function getEventEditor()
     {
-        /* utilisé pour mettre à jour un évènement
-            if (isset($_GET['post_id']) && $_GET['post_id'] > 0) {
-            $postsManager = new PostManager();
-            $post = $postsManager->getPostById($_GET['post_id']);
-            }
-        */
+        if (isset($_GET['event_id']) && $_GET['event_id'] > 0) {
+            $eventId = $this->cleanVar($_GET['event_id']);
+            $eventsManager = new EventsManager();
+            $event = $eventsManager->getEventById($eventId);
+        }
         $gamesManager = new GamesManager();
         $games = $gamesManager->listGames();
         require('View/eventEditorView.php');
     }
-    //à adapter
     public function addEvent()
     {
         $userId = $this->cleanVar($_SESSION['userId']);
@@ -54,36 +52,43 @@ class EventsController extends Controller
             } else {
                 $successMessage = "Bravo! Votre séance est fixée! ";
                 require('View/template.php');
-                //$usersController = new UsersController();
-                //$usersController->userDashboard();
             }
         }
 
     }
     //à modifier, bien entendu
-    public function updatePost()
+    public function updateEvent()
     {
-        $postId = $_GET['post_id'];
-        $postTitle = $this->cleanVar($_POST['postTitle']);
-        $postContent = $_POST['postContent'];//cleanVar retiré, TinyMCE fait dejà le taf.
-        $postPublishDate = $this->cleanVar($_POST['postPublishDate']);
-        if (empty($postTitle) || empty($postContent) || empty($postPublishDate)) {
+        $eventId = $this->cleanVar($_GET['event_id']);
+        $eventName = $this->cleanVar($_POST['eventName']);
+        $eventInformations = $_POST['eventInformations'];//vérifié par TinyMCE
+        $eventDate = $this->cleanVar($_POST['eventDate']);
+        $gameId = $this->cleanVar($_POST['game_id']);
+        if (empty($eventId) || empty($eventName) || empty($eventInformations) || empty($eventDate) || empty($gameId))
+        {
             throw new \Exception('Toutes les données ne sont pas saisies!');
         } else {
-            $adminManager = new AdminManager();
-            $adminManager->updatePost($postId, $postTitle, $postContent, $postPublishDate);
-            $successMessage = 'La séance a été mise à jour. Cool!';
-            $usersController = new UsersController();
-            $usersController->userDashboard();
+            $eventsManager = new EventsManager();
+            $affectedLines = $eventsManager->updateEvent($eventId, $eventName, $gameId, $eventInformations, $eventDate);
+            if ($affectedLines === false) {
+                throw new \Exception('impossible de modifier cette aventure');
+            } else {
+                $successMessage = "Bravo! Votre séance est modifiée! ";
+                require('View/template.php');
+            }
         }
     }
     //à modifier, bien entendu
-    public function deletePost()
+    public function deleteEvent()
     {
-        $postId = $_GET['post_id'];
-        $adminManager = new AdminManager();
-        $adminManager->deletePost($postId);
-        $successMessage = 'Le chapitre est supprimé!';
-        require('View/template.php');
+        $eventId = $this->cleanVar($_GET['event_id']);
+        if (empty($eventId)) {
+            throw new \Exception('Erreur lors de la suppression.');
+        } else {
+            $eventsManager = new EventsManager();
+            $eventsManager->DeleteEvent($eventId);
+            $successMessage = 'La séance est annulée!';
+            require('View/template.php');
+        }
     }
 }

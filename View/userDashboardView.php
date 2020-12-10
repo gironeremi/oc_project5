@@ -22,21 +22,20 @@ ob_start(); ?>
                         <!--<p class="card-text"><?= $event['informations'] ?></p>-->
                     </div>
                     <div class="card-footer">
+                        <a href="index.php?action=getEventById&event_id=<?= $event['event_id'] ?>" class="btn btn-primary m-2">Consulter</a>
+                        <a href="index.php?action=getEventEditor&event_id=<?= $event['event_id'] ?>" class="btn btn-secondary m-2">Modifier</a>
+                        <a href="index.php?action=deleteEvent&event_id=<?= $event['event_id'] ?>" class="btn btn-danger m-2">Supprimer</a>
+                    </div>
+                </div>
+                <!--
+                    <div>
                         <p>Participants:</p>
                         <ul class="list-group">
                             <li class="list-group-item">liste ici même</li>
-                            <!-- ici, le contenu de la table..."table" dans une boucle foreach -->
+                            ici, le contenu de la table..."table" dans une boucle foreach
                         </ul>
                     </div>
-                    <!--
-                    <div>
-                    à adapter
-                        <a href="index.php?action=post&post_id=<?= $post['post_id'] ?>" class="btn btn-primary m-2">Consulter</a>
-                        <a href="index.php?action=getPostEditor&post_id=<?= $post['post_id'] ?>" class="btn btn-secondary m-2">Modifier</a>
-                        <a href="index.php?action=deletePost&post_id=<?= $post['post_id'] ?>" class="btn btn-danger m-2">Supprimer</a>
-                    </div>
                     -->
-                </div>
                 <?php
             }
     } else {

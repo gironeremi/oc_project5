@@ -32,6 +32,7 @@
                 <label for="gameName" class="col-4 col-form-label">Quel jeu?</label>
                 <div class="col-8">
                     <select id="game_id" name="game_id" class="custom-select" aria-describedby="game_idHelpBlock" required="required">
+                        <option value="" selected disabled>Choisissez un jeu</option>
                         <?php
                         foreach ($games as $game)
                             {
@@ -57,7 +58,7 @@
         </textarea>
         </p>
         <p>
-            <label for="eventDate">Rendez-vous le : </label><input type="date" name="eventDate" class="form-control" value="<?= date('Y-m-d') ?>" />
+            <label for="eventDate">Rendez-vous le : </label><input type="date" name="eventDate" class="form-control" value="<?php if(!empty($event)){echo $event['eventDate'];}else { echo date('Y-m-d');} ?>" />
         </p>
         <button type="submit" class="btn btn-primary btn-block mt-4">Valider</button>
     </form>

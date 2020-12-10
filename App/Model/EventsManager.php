@@ -20,6 +20,15 @@ INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ?');
         $events->execute(array($userId));
         return $events->fetchAll();
     }
+    /*
+     * EVENT CRUD
+     */
+    public function addEvent($eventName, $userId, $gameId, $eventInformations, $eventDate)
+    {
+        $db = $this->getDbConnect();
+        $newEvent = $db->prepare("INSERT INTO events(eventName, user_id, game_id, informations, eventDate) VALUES (?,?,?,?,?)");
+        return $newEvent->execute(array($eventName, $userId, $gameId, $eventInformations, $eventDate));
+    }
     public function getEventById($eventId)
     {
         $db = $this->getDbConnect();
@@ -28,11 +37,16 @@ INNER JOIN games ON events.game_id = games.game_id WHERE events.event_id = ?');
         $req->execute(array($eventId));
         return $req->fetch();
     }
-    public function addEvent($eventName, $userId, $gameId, $eventInformations, $eventDate)
+    public function updateEvent($eventId, $eventName, $gameId, $eventInformations, $eventDate)
     {
         $db = $this->getDbConnect();
-        $newEvent = $db->prepare("INSERT INTO events(eventName, user_id, game_id, informations, eventDate) VALUES (?,?,?,?,?)");
-        return $newEvent->execute(array($eventName, $userId, $gameId, $eventInformations, $eventDate));
-        //return $affectedLines = $newEvent->execute(array($postTitle, $postContent, $postPublishDate));
+        $updateEvent = $db->prepare('UPDATE events SET eventName = ?, game_id = ?, informations = ?, eventDate = ? WHERE event_id = ?');
+        $updateEvent->execute(array($eventName, $gameId, $eventInformations, $eventDate, $eventId));
+    }
+    public function DeleteEvent($eventId)
+    {
+        $db = $this->getDbConnect();
+        $deleteEvent = $db->prepare('DELETE FROM events WHERE event_id = ?');
+        $deleteEvent->execute(array($eventId));
     }
 }

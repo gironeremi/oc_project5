@@ -41,6 +41,12 @@ try {
         case 'addEvent':
             $eventsController->addEvent();
             break;
+        case 'updateEvent':
+            $eventsController->updateEvent();
+            break;
+        case 'deleteEvent':
+            $eventsController->deleteEvent();
+            break;
         case 'addComment':
             $commentsController->addComment();
             break;
