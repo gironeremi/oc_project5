@@ -2,19 +2,22 @@
 ob_start(); ?>
 <div class="card m-5">
     <div class="card-header">
-        <h2 class="card-title"><?= $event['eventName'] ?> - <?= $event['gameName']?></h2>
-        <h5 class="card-subtitle mb-2 text-muted"><?= $event['eventDate'] ?> <br />
+        <h2 class="card-title"><?= $event['eventName'] ?> - <small><?= $event['gameName']?></small></h2>
+        <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />
             Organisé par <?= $event['username']?>
         </h5>
     </div>
     <div class="card-body">
-        <p class="card-text"><?= $event['informations'] ?></p>
+        <p class="card-text"><?= nl2br($event['informations']) ?></p>
     </div>
-    <div class="card-footer">
-        <p>Participants:</p>
-        <ul class="list-group">
-            <li class="list-group-item">liste ici même</li>
-        </ul>
+</div>
+<div class="m-5">
+    <p>Participants:</p>
+    <ul class="list-group">
+        <li class="list-group-item">liste ici même</li>
+    </ul>
+    <a href="index.php?action=addPlayer"></a>
+    <a href="index.php?action=deletePlayer"></a>
 </div>
 
 <div class="card m-5 p-4 shadow bg-white rounded d-flex flex-column justify-content-center align-items-center">

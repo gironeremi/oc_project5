@@ -14,13 +14,13 @@ ob_start(); ?>
                 <div class="card m-5">
                     <div class="card-header">
                         <h2 class="card-title"><?= $event['eventName'] ?> - <?= $event['gameName']?></h2>
-                        <h5 class="card-subtitle mb-2 text-muted"><?= $event['eventDate'] ?> <br />
+                        <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />
                             Organisé par <?= $event['username']?>
                         </h5>
                     </div>
-                    <div class="card-body">
-                        <!--<p class="card-text"><?= $event['informations'] ?></p>-->
-                    </div>
+                    <!--<div class="card-body">
+                        <p class="card-text"><?= $event['informations'] ?></p>
+                    </div>-->
                     <div class="card-footer">
                         <a href="index.php?action=getEventById&event_id=<?= $event['event_id'] ?>" class="btn btn-primary m-2">Consulter</a>
                         <a href="index.php?action=getEventEditor&event_id=<?= $event['event_id'] ?>" class="btn btn-secondary m-2">Modifier</a>

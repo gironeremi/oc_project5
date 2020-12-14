@@ -6,12 +6,13 @@ use App\Controller\ErrorsController;
 use App\Controller\EventsController;
 use App\Controller\UsersController;
 use App\Controller\CommentsController;
-
+use \App\Controller\TablesController;
 $action = "";
 $controller = new Controller();
 $eventsController = new EventsController();
 $usersController = new UsersController();
 $commentsController = new CommentsController();
+$tablesController = new TablesController();
 if (isset($_GET['action'])) {
     $action = $controller->cleanVar($_GET['action']);
 }
@@ -49,6 +50,12 @@ try {
             break;
         case 'addComment':
             $commentsController->addComment();
+            break;
+        case 'addPlayer':
+        $tablesController->addPlayer();
+            break;
+        case 'removePlayer':
+            $tablesController->deletePlayer();
             break;
         default:
             $controller->home();

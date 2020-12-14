@@ -38,7 +38,7 @@ class EventsController extends Controller
     {
         $userId = $this->cleanVar($_SESSION['userId']);
         $eventName = $this->cleanVar($_POST['eventName']);
-        $eventInformations = $_POST['eventInformations'];//pas de cleanVar ici, TinyMCE possède son propre système de nettoyage de données.
+        $eventInformations = $this->cleanVar($_POST['eventInformations']);
         $eventDate = $this->cleanVar($_POST['eventDate']);
         $gameId = $this->cleanVar($_POST['game_id']);
         if (empty($eventName) || empty($eventInformations) || empty($eventDate) || empty($gameId) || empty($userId))
@@ -61,7 +61,7 @@ class EventsController extends Controller
     {
         $eventId = $this->cleanVar($_GET['event_id']);
         $eventName = $this->cleanVar($_POST['eventName']);
-        $eventInformations = $_POST['eventInformations'];//vérifié par TinyMCE
+        $eventInformations = $this->cleanVar($_POST['eventInformations']);
         $eventDate = $this->cleanVar($_POST['eventDate']);
         $gameId = $this->cleanVar($_POST['game_id']);
         if (empty($eventId) || empty($eventName) || empty($eventInformations) || empty($eventDate) || empty($gameId))
@@ -78,7 +78,6 @@ class EventsController extends Controller
             }
         }
     }
-    //à modifier, bien entendu
     public function deleteEvent()
     {
         $eventId = $this->cleanVar($_GET['event_id']);
