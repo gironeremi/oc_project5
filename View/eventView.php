@@ -14,10 +14,29 @@ ob_start(); ?>
 <div class="m-5">
     <p>Participants:</p>
     <ul class="list-group">
-        <li class="list-group-item">liste ici même</li>
+        <?php
+        foreach ($players as $player) {
+        ?>
+        <li class="list-group-item"><?= $player['username'] ?></li>
+        <?php
+        }
+        ?>
     </ul>
-    <a href="index.php?action=addPlayer"></a>
-    <a href="index.php?action=deletePlayer"></a>
+    <?php
+    if (isset($_SESSION['username'])) {
+    ?>
+        <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
+        <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
+    <?php
+    } else {
+    ?>
+        <div class="alert alert-info text-center">
+            <strong><i class="fas fa-exclamation"></i> Attention: </strong>
+            Pour modifier votre présence, veuillez <a href="index.php?action=login">vous connecter.</a>
+        </div>
+    <?php
+    }
+    ?>
 </div>
 
 <div class="card m-5 p-4 shadow bg-white rounded d-flex flex-column justify-content-center align-items-center">

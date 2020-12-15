@@ -7,7 +7,7 @@ ob_start(); ?>
 <section>
     <h2>Prochaines séances organisées</h2>
     <?php
-    if (isset($events)) {
+    if (!empty($events[0])) {
         foreach ($events as $event)
             {
                 ?>
@@ -27,15 +27,6 @@ ob_start(); ?>
                         <a href="index.php?action=deleteEvent&event_id=<?= $event['event_id'] ?>" class="btn btn-danger m-2">Supprimer</a>
                     </div>
                 </div>
-                <!--
-                    <div>
-                        <p>Participants:</p>
-                        <ul class="list-group">
-                            <li class="list-group-item">liste ici même</li>
-                            ici, le contenu de la table..."table" dans une boucle foreach
-                        </ul>
-                    </div>
-                    -->
                 <?php
             }
     } else {
@@ -45,6 +36,18 @@ ob_start(); ?>
 </section>
 <section>
     <h2>Prochaines inscriptions</h2>
+    <?php
+    if (!empty($eventsReservations[0])) {
+        foreach ($eventsReservations as $reservation) {
+            ?>
+            <?= $reservation['eventName'] ?><br />
+            <?= $reservation['eventDate'] ?>
+        <?php
+        }
+    } else {
+        echo 'Pas de partie réservée.';
+    }
+    ?>
 </section>
 
 <?php $content = ob_get_clean();

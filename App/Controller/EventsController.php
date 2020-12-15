@@ -3,6 +3,7 @@ namespace App\Controller;
 use App\Model\CommentsManager;
 use App\Model\EventsManager;
 use App\Model\GamesManager;
+use App\Model\PlayersManager;
 
 class EventsController extends Controller
 {
@@ -18,8 +19,10 @@ class EventsController extends Controller
         if (is_int($eventId)) {
             $eventsManager = new EventsManager();
             $commentsManager = new CommentsManager();
+            $playersManager= new PlayersManager();
             $event = $eventsManager->getEventById($eventId);
             $comments = $commentsManager->listComments($eventId);
+            $players = $playersManager->listPlayers($eventId);
             require('View/eventView.php');
         }
     }
