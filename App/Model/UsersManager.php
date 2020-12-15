@@ -5,7 +5,7 @@ class UsersManager extends Manager
     public function getUserByName($username)
     {
         $db = $this->getDbConnect();
-        $req = $db->prepare('SELECT * FROM users WHERE username = ?');
+        $req = $db->prepare('SELECT * FROM users INNER JOIN roles ON users.role_id = roles.roles_id WHERE username = ?');
         $req->execute(array($username));
         return $req->fetch();
     }

@@ -60,8 +60,15 @@ class UsersController extends Controller
             if (empty($errors)) {
                 $_SESSION['username'] = $username;
                 $_SESSION['userId'] = $userExists['user_id'];
-                $this->userDashboard();
-                die();
+                $_SESSION['role'] = $userExists['role'];
+                if ($_SESSION['role'] === 'motherBrain') {
+                    $adminController = new AdminController();
+                    $adminController->adminDashboard();
+                    die();
+                } else {
+                    $this->userDashboard();
+                    die();
+                }
             }
         }
         require('View/loginView.php');

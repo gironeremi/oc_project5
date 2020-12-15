@@ -7,12 +7,14 @@ use App\Controller\EventsController;
 use App\Controller\UsersController;
 use App\Controller\CommentsController;
 use \App\Controller\PlayersController;
+use \App\Controller\AdminController;
 $action = "";
 $controller = new Controller();
 $eventsController = new EventsController();
 $usersController = new UsersController();
 $commentsController = new CommentsController();
 $playersController = new PlayersController();
+$adminController = new AdminController();
 if (isset($_GET['action'])) {
     $action = $controller->cleanVar($_GET['action']);
 }
@@ -56,6 +58,9 @@ try {
             break;
         case 'deletePlayer':
             $playersController->deletePlayer();
+            break;
+        case 'adminDashboard':
+            $adminController->adminDashboard();
             break;
         default:
             $controller->home();

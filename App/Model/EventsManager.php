@@ -7,7 +7,7 @@ class EventsManager extends Manager
         $db = $this->getDbConnect();
         //joindre dans la requête SQL les bonnes informations
         $req = $db->prepare('SELECT *,DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN users ON events.user_id = users.user_id
-INNER JOIN games ON events.game_id = games.game_id');
+INNER JOIN games ON events.game_id = games.game_id ORDER BY eventDate');
         $req->execute();
         return $req;
     }
@@ -16,7 +16,7 @@ INNER JOIN games ON events.game_id = games.game_id');
         $db = $this->getDbConnect();
         //joindre dans la requête SQL les bonnes informations
         $events = $db->prepare('SELECT *, DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN users ON events.user_id = users.user_id
-INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ?');
+INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ?  ORDER BY eventDate');
         $events->execute(array($userId));
         return $events->fetchAll();
     }

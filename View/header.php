@@ -10,21 +10,35 @@
                 <a class="nav-link" href="index.php?action=listEvents">Prochaines Séances</a>
             </li>
             <?php
-                if (isset($_SESSION['username']))
-            {?>
-            <li class="nav nav-item">
-                <a href="index.php?action=userDashboard" class="nav-link">
-                    Salut <?= $_SESSION['username'] ?> !</a>
-            </li>
-            <li class="nav nav-item">
-                <a href="index.php?action=logout" class="nav-link">Déconnexion</a>
-            </li>
+                if (isset($_SESSION['username'])) {
+                    if ($_SESSION['role'] === 'motherBrain') {
+                    ?>
+                        <li class="nav nav-item">
+                        <a href="index.php?action=adminDashboard" class="nav-link">
+                        Panneau d'administration</a>
+                        </li>
+                        <li clas="nav nav-item">
+                            <a href="" class="nav-link">Ajouter un jeu</a>
+                        </li>
+                        <?php
+                    } else {
+                    ?>
+                    <li class="nav nav-item">
+                        <a href="index.php?action=userDashboard" class="nav-link">
+                            Salut <?= $_SESSION['username'] ?> !</a>
+                    </li>
+                    <?php
+                    }
+                    ?>
                 <li class="nav nav-item">
                     <a href="index.php?action=getEventEditor" class="nav-link">Créer une séance</a>
                 </li>
-            <?php }
-                else {
-            ?>
+                <li class="nav nav-item">
+                    <a href="index.php?action=logout" class="nav-link">Déconnexion</a>
+                </li>
+                <?php
+                } else {
+                ?>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=login">Connexion</a>
             </li>
