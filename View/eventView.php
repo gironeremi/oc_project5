@@ -17,17 +17,22 @@ ob_start(); ?>
         <?php
         foreach ($players as $player) {
         ?>
-        <li class="list-group-item"><?= $player['username'] ?></li>
+        <li class="list-group-item"><?= $player ?></li>
         <?php
         }
         ?>
     </ul>
     <?php
     if (isset($_SESSION['username'])) {
-    ?>
-        <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
-        <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
-    <?php
+        if (in_array($_SESSION['username'], $players) === true) {
+        ?>
+            <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
+        <?php
+        } else {
+        ?>
+            <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
+        <?php
+        }
     } else {
     ?>
         <div class="alert alert-info text-center">

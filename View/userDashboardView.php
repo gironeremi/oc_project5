@@ -41,7 +41,7 @@ ob_start(); ?>
         foreach ($eventsReservations as $reservation) {
             ?>
             <?= $reservation['eventName'] ?><br />
-            <?= $reservation['eventDate'] ?>
+            le <?= $reservation['eventDate_fr'] ?>
         <?php
         }
     } else {

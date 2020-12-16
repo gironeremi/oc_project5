@@ -17,18 +17,15 @@ class PlayersManager extends Manager
     public function listPlayers($eventId)
     {
         $db = $this->getDbConnect();
-        $req = $db->prepare('SELECT users.* FROM users INNER JOIN events_has_users ON users.user_id = events_has_users.user_id WHERE events_has_users.event_id = ?');
+        $req = $db->prepare('SELECT users.username FROM users INNER JOIN events_has_users ON users.user_id = events_has_users.user_id WHERE events_has_users.event_id = ?');
         $req->execute(array($eventId));
-        return $req;
+        return $req->fetchAll();
     }
     public function listEventsByPlayer($userId)
     {
         $db =$this->getDbConnect();
-        $req = $db->prepare('SELECT events.* FROM events INNER JOIN events_has_users ON events_has_users.event_id = events.event_id WHERE events_has_users.user_id = ?');
+        $req = $db->prepare('SELECT events.*, DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN events_has_users ON events_has_users.event_id = events.event_id WHERE events_has_users.user_id = ?');
         $req->execute(array($userId));
         return $req->fetchAll();
     }
 }
-//SELECT events.* FROM events INNER JOIN events_has_users ON events_has_users.event_id = events.event_id WHERE events_has_users.user_id = 11
-
-//SELECT events.* INNER JOIN events_has_users ON events.event_id = events_has_users.user_id WHERE events_has_users.user_id = ?');

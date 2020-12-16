@@ -22,7 +22,8 @@ class EventsController extends Controller
             $playersManager= new PlayersManager();
             $event = $eventsManager->getEventById($eventId);
             $comments = $commentsManager->listComments($eventId);
-            $players = $playersManager->listPlayers($eventId);
+            $listPlayers = $playersManager->listPlayers($eventId);
+            $players = array_column($listPlayers, 'username');
             require('View/eventView.php');
         }
     }
