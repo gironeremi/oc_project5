@@ -8,6 +8,7 @@ use App\Controller\UsersController;
 use App\Controller\CommentsController;
 use \App\Controller\PlayersController;
 use \App\Controller\AdminController;
+use \App\Controller\GamesController;
 $action = "";
 $controller = new Controller();
 $eventsController = new EventsController();
@@ -15,18 +16,21 @@ $usersController = new UsersController();
 $commentsController = new CommentsController();
 $playersController = new PlayersController();
 $adminController = new AdminController();
+$gamesController = new GamesController();
 if (isset($_GET['action'])) {
     $action = $controller->cleanVar($_GET['action']);
 }
 try {
     switch ($action) {
+    /* EVENTS */
         case 'listEvents':
             $eventsController->listEvents();
             break;
         case 'getEventById':
             $eventsController->getEventById();
             break;
-        case 'register':
+    /* USERS */
+            case 'register':
             $usersController->register();
             break;
         case 'login':
@@ -35,9 +39,13 @@ try {
         case 'userDashboard':
             $usersController->userDashboard();
             break;
+        case 'addComment':
+            $commentsController->addComment();
+            break;
         case 'logout':
             $usersController->logout();
             break;
+    /* CRUD EVENT */
         case 'getEventEditor':
             $eventsController->getEventEditor();
             break;
@@ -50,17 +58,29 @@ try {
         case 'deleteEvent':
             $eventsController->deleteEvent();
             break;
-        case 'addComment':
-            $commentsController->addComment();
-            break;
+    /* PLAYERS */
         case 'addPlayer':
             $playersController->addPlayer();
             break;
         case 'deletePlayer':
             $playersController->deletePlayer();
             break;
+    /* ADMIN */
         case 'adminDashboard':
             $adminController->adminDashboard();
+            break;
+    /* CRUD GAMES */
+        case 'getGameEditor':
+            $gamesController->getGameEditor();
+            break;
+        case 'addGame':
+            $gamesController->addGame();
+            break;
+        case 'updateGame':
+            $gamesController->updateGame();
+            break;
+        case 'deleteGame':
+            $gamesController->deleteGame();
             break;
         default:
             $controller->home();

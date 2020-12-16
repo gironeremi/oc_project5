@@ -18,7 +18,7 @@
                         Panneau d'administration</a>
                         </li>
                         <li clas="nav nav-item">
-                            <a href="" class="nav-link">Ajouter un jeu</a>
+                            <a href="index.php?action=getGameEditor" class="nav-link">Ajouter un jeu</a>
                         </li>
                         <?php
                     } else {
