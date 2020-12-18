@@ -9,8 +9,17 @@ class EventsController extends Controller
 {
     public function listEvents()
     {
+        if (isset($_GET['page']) && !empty($_GET['page'])) {
+            $currentPage = $this->cleanVar($_GET['page']);
+        } else {
+            $currentPage = 1;
+        }
         $eventsManager = new EventsManager();
-        $events = $eventsManager->listEvents();
+        $numberOfEvents = $eventsManager->getNumberOfEvents();
+        $eventsPerPage = 4;
+        $pages = ceil($numberOfEvents / $eventsPerPage);
+        $firstEvent = (($currentPage - 1) * $eventsPerPage);
+        $events = $eventsManager->listEvents($firstEvent, $eventsPerPage);
         require('View/listEventsView.php');
     }
     public function getEventById()

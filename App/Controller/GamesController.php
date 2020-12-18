@@ -4,6 +4,7 @@ use App\Model\GamesManager;
 
 class GamesController extends Controller
 {
+    //ici ajout vérification de l'admin pour toutes les méthodes
     public function addGame()
     {
         $gameName = $this->cleanVar($_POST['gameName']);

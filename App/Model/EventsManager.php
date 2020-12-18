@@ -2,12 +2,13 @@
 namespace App\Model;
 class EventsManager extends Manager
 {
-    public function listEvents()
+    public function listEvents($firstEvent, $eventsPerPage)
     {
         $db = $this->getDbConnect();
-        //joindre dans la requête SQL les bonnes informations
         $req = $db->prepare('SELECT *,DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN users ON events.user_id = users.user_id
-INNER JOIN games ON events.game_id = games.game_id ORDER BY eventDate');
+INNER JOIN games ON events.game_id = games.game_id WHERE eventDate > NOW() ORDER BY eventDate LIMIT :first_event, :events_per_page');
+        $req->bindValue(':first_event', $firstEvent, \PDO::PARAM_INT);
+        $req->bindValue(':events_per_page', $eventsPerPage, \PDO::PARAM_INT);
         $req->execute();
         return $req;
     }
@@ -16,13 +17,19 @@ INNER JOIN games ON events.game_id = games.game_id ORDER BY eventDate');
         $db = $this->getDbConnect();
         //joindre dans la requête SQL les bonnes informations
         $events = $db->prepare('SELECT *, DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN users ON events.user_id = users.user_id
-INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ?  ORDER BY eventDate');
+INNER JOIN games ON events.game_id = games.game_id WHERE events.user_id = ? AND eventDate > NOW() ORDER BY eventDate');
         $events->execute(array($userId));
         return $events->fetchAll();
     }
+    public function getNumberOfEvents()
+    {
+        $db = $this->getDbConnect();
+        $req = $db->query('SELECT COUNT(*) AS numberOfEvents FROM events');
+        return $numberOfEvents = (int)$req->fetchColumn();
+    }
     /*
-     * EVENT CRUD
-     */
+      * EVENT CRUD
+      */
     public function addEvent($eventName, $userId, $gameId, $eventInformations, $eventDate)
     {
         $db = $this->getDbConnect();

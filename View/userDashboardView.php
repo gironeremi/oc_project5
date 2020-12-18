@@ -40,8 +40,9 @@ ob_start(); ?>
     if (!empty($eventsReservations[0])) {
         foreach ($eventsReservations as $reservation) {
             ?>
-            <?= $reservation['eventName'] ?><br />
-            le <?= $reservation['eventDate_fr'] ?>
+            <p><?= $reservation['eventName'] ?><br />
+                le <?= $reservation['eventDate_fr'] ?>
+            </p>
         <?php
         }
     } else {
