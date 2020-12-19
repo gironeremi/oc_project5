@@ -54,7 +54,7 @@ ob_start(); ?>
                 <label for="comment">Vous pouvez donner des informations importantes à votre groupe.<br />
                     <span class="text-info font-italic"> Ex: je serai en retard de 5 minutes, j'apporte une bouteille de soda, etc.</span>
                 </label>
-                <textarea id="comment" class="form-control mt-3 mb-4 shadow-sm" name="comment" placeholder="Saisissez ici votre commentaire" rows="3" maxlength="280" required></textarea>
+                <textarea id="comment" class="form-control mt-3 mb-4 shadow-sm" name="comment" placeholder="Saisissez ici votre commentaire" rows="3" maxlength="255" required></textarea>
             </div>
             <div class="mt-3 mb-2">
                 <input type="submit" class="btn btn-primary btn-block"/>

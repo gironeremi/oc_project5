@@ -7,58 +7,74 @@ class GamesController extends Controller
     //ici ajout vérification de l'admin pour toutes les méthodes
     public function addGame()
     {
-        $gameName = $this->cleanVar($_POST['gameName']);
-        $style = $this->cleanVar($_POST['style']);
-        if (empty($gameName) || empty($style)) {
-            throw new \Exception('Toutes les données ne sont pas saisies!');
-        } else {
-            $gamesManager = new GamesManager();
-            $newGame = $gamesManager->addGame($gameName, $style);
-            if ($newGame === false) {
-                throw new \Exception('impossible d\'ajouter ce jeu!');
+        if ($_SESSION['role'] === 'admin') {
+            $gameName = $this->cleanVar($_POST['gameName']);
+            $style = $this->cleanVar($_POST['style']);
+            if (empty($gameName) || empty($style)) {
+                throw new \Exception('Toutes les données ne sont pas saisies!');
             } else {
-                $successMessage = "Nouveau jeu de rôle ajouté!";
-                require('View/template.php');
+                $gamesManager = new GamesManager();
+                $newGame = $gamesManager->addGame($gameName, $style);
+                if ($newGame === false) {
+                    throw new \Exception('impossible d\'ajouter ce jeu!');
+                } else {
+                    $successMessage = "Nouveau jeu de rôle ajouté!";
+                    require('View/template.php');
+                }
             }
+        } else {
+            throw new \Exception('Accès non autorisé!');
         }
     }
     public function updateGame()
     {
-        $gameId = $this->cleanVar($_GET['game_id']);
-        $gameName = $this->cleanVar($_POST['gameName']);
-        $style = $this->cleanVar($_POST['style']);
-        if (empty($gameName) || empty($style) || empty($gameId)) {
-            throw new \Exception('Toutes les données ne sont pas saisies!');
-        } else {
-            $gamesManager = new GamesManager();
-            $updateGame = $gamesManager->updateGame($gameName, $style, $gameId);
-            if ($updateGame === false) {
-                throw new \Exception('impossible de modifier ce jeu!');
+        if ($_SESSION['role'] === 'admin') {
+            $gameId = $this->cleanVar($_GET['game_id']);
+            $gameName = $this->cleanVar($_POST['gameName']);
+            $style = $this->cleanVar($_POST['style']);
+            if (empty($gameName) || empty($style) || empty($gameId)) {
+                throw new \Exception('Toutes les données ne sont pas saisies!');
             } else {
-                $successMessage = "Jeu de rôle modifié!";
-                require('View/template.php');
+                $gamesManager = new GamesManager();
+                $updateGame = $gamesManager->updateGame($gameName, $style, $gameId);
+                if ($updateGame === false) {
+                    throw new \Exception('impossible de modifier ce jeu!');
+                } else {
+                    $successMessage = "Jeu de rôle modifié!";
+                    require('View/template.php');
+                }
             }
+        } else {
+            throw new \Exception('Accès non autorisé!');
         }
     }
     public function deleteGame()
     {
-        $gameId = $this->cleanVar($_GET['game_id']);
-        $gamesManager = new GamesManager();
-        $deleteGame = $gamesManager->deleteGame($gameId);
-        if ($deleteGame === false) {
-            throw new \Exception('Erreur lors de la suppression du jeu.');
+        if ($_SESSION['role'] === 'admin') {
+            $gameId = $this->cleanVar($_GET['game_id']);
+            $gamesManager = new GamesManager();
+            $deleteGame = $gamesManager->deleteGame($gameId);
+            if ($deleteGame === false) {
+                throw new \Exception('Erreur lors de la suppression du jeu.');
+            } else {
+                $successMessage = "Le jeu a été retiré de la liste!";
+                require('View/template.php');
+            }
         } else {
-            $successMessage = "Le jeu a été retiré de la liste!";
-            require('View/template.php');
+            throw new \Exception('Accès non autorisé!');
         }
     }
     public function getGameEditor()
     {
-        if (isset($_GET['game_id']) && $_GET['game_id'] > 0) {
-            $gameId = $this->cleanVar($_GET['game_id']);
-            $gamesManager = new GamesManager();
-            $game = $gamesManager->getGameById($gameId);
+        if ($_SESSION['role'] === 'admin') {
+            if (isset($_GET['game_id']) && $_GET['game_id'] > 0) {
+                $gameId = $this->cleanVar($_GET['game_id']);
+                $gamesManager = new GamesManager();
+                $game = $gamesManager->getGameById($gameId);
+            }
+            require('View/gameEditorView.php');
+        } else {
+            throw new \Exception('Accès non autorisé!');
         }
-        require('View/gameEditorView.php');
     }
 }

@@ -20,11 +20,11 @@ ob_start(); ?>
     <form method="post" action="" class="col-md-8 m-3 p-3 shadow-sm">
         <div class="form-group">
             <label for="username">Pseudo</label>
-            <input type="text" name="username" class="form-control" />
+            <input type="text" name="username" class="form-control" maxlength="30"/>
         </div>
         <div class="form-group">
             <label for="password">Mot de Passe</label>
-            <input type="password" name="password" class="form-control" />
+            <input type="password" name="password" class="form-control" maxlength="30"/>
             <button type="submit" class="btn btn-primary btn-block mt-4">Se connecter</button>
         </div>
     </form>

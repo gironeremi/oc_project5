@@ -13,11 +13,12 @@
           ?>
     >
         <div class="form-group">
-            <label for="eventName">Nom de l'aventure : </label><input type="text" name="eventName" class="form-control" value="<?php
+            <label for="eventName">Nom de l'aventure : </label>
+            <input type="text" name="eventName" class="form-control" value="<?php
                 if(!empty($event['eventName'])) {
                     echo $event['eventName'];
                 }
-            ?>"/>
+            ?>" maxlength="255"/>
         </div>
         <div>
             <div class="form-group row">
@@ -41,7 +42,7 @@
             </div>
         </div>
         <label for="eventInformations">Description de la séance : </label><br />
-        <p><textarea id="eventInformations" class="form-control" name="eventInformations" rows="15"><?php
+        <p><textarea id="eventInformations" class="form-control" name="eventInformations" rows="15" maxlength="1000"><?php
             if(!empty($event['informations'])) {
                 echo strip_tags($event['informations']);
             }

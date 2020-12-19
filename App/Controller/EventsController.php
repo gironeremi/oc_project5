@@ -69,7 +69,6 @@ class EventsController extends Controller
         }
 
     }
-    //à modifier, bien entendu
     public function updateEvent()
     {
         $eventId = $this->cleanVar($_GET['event_id']);

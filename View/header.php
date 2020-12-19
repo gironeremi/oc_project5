@@ -11,7 +11,7 @@
             </li>
             <?php
                 if (isset($_SESSION['username'])) {
-                    if ($_SESSION['role'] === 'motherBrain') {
+                    if ($_SESSION['role'] === 'admin') {
                     ?>
                         <li class="nav nav-item">
                         <a href="index.php?action=adminDashboard" class="nav-link">

@@ -6,7 +6,7 @@ class AdminController extends Controller
 {
     public function adminDashboard()
     {
-        if ($_SESSION['role'] === 'motherBrain') {
+        if ($_SESSION['role'] === 'admin') {
             $gamesManager = new GamesManager();
             $games = $gamesManager->listGames();
             require('View/adminDashboardView.php');

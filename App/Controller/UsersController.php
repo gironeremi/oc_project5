@@ -61,7 +61,7 @@ class UsersController extends Controller
                 $_SESSION['username'] = $username;
                 $_SESSION['userId'] = $userExists['user_id'];
                 $_SESSION['role'] = $userExists['role'];
-                if ($_SESSION['role'] === 'motherBrain') {
+                if ($_SESSION['role'] === 'admin') {
                     $adminController = new AdminController();
                     $adminController->adminDashboard();
                     die();

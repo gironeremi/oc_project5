@@ -17,9 +17,11 @@ class CommentsController extends Controller
                     throw new \Exception('Impossible d\'ajouter le commentaire.');
                 } else {
                     $successMessage = 'Commentaire ajouté!';
-                    require('View/userDashboardView.php');
+                    require('View/template.php');
                 }
             }
+        } else {
+            throw new \Exception('Erreur commentaire ou utilisateur.');
         }
     }
 }

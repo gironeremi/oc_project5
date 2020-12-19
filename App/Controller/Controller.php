@@ -15,7 +15,7 @@ class Controller
     public function home()
     {
         $gamesManager = new GamesManager();
-        $games = $gamesManager->listSomeGames();
+        $games = $gamesManager->listGames();
         require('View/homeView.php');
     }
 }
