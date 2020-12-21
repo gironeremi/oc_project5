@@ -51,7 +51,7 @@
         <p>
             <label for="eventDate">Rendez-vous le : </label><input type="date" name="eventDate" class="form-control" value="<?php if(!empty($event)){echo $event['eventDate'];}else { echo date('Y-m-d');} ?>" />
         </p>
-        <button type="submit" class="btn btn-primary btn-block mt-4">Valider</button>
+        <button type="submit" class="btn btn-primary btn-lg mt-4">Valider</button>
     </form>
 </div>
 <?php $content = ob_get_clean();

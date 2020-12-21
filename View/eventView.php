@@ -1,51 +1,45 @@
 <?php $title = $event['eventName'];
 ob_start(); ?>
-<div class="card m-5">
+<div class="card m-5 border-secondary shadow">
     <div class="card-header">
         <h2 class="card-title"><?= $event['eventName'] ?> - <small><?= $event['gameName']?></small></h2>
+    </div>
+    <div class="card-body">
         <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />
             Organisé par <?= $event['username']?>
         </h5>
-    </div>
-    <div class="card-body">
+        <hr>
         <p class="card-text"><?= nl2br($event['informations']) ?></p>
     </div>
-</div>
-<div class="m-5">
-    <p>Participants:</p>
-    <ul class="list-group">
+    <div class="card-footer d-flex flex-column justify-content-center align-items-center">
+        <h5>Participants:</h5>
+        <ul class="list-group col-md-8">
+            <?php
+            foreach ($players as $player) {
+            ?>
+            <li class="list-group-item"><?= $player ?></li>
+            <?php
+            }
+            ?>
+        </ul>
+        <div class="mt-4 mb-2">
         <?php
-        foreach ($players as $player) {
-        ?>
-        <li class="list-group-item"><?= $player ?></li>
-        <?php
-        }
-        ?>
-    </ul>
-    <?php
-    if (isset($_SESSION['username'])) {
-        //ajouter ici la condition: si l'orga = la personne conectée, ces boutons n'aparaissent pas...
-        //donc en fait c'est le contraire: si orga != personne, on affiche ces boutons.
-        if ($_SESSION['username'] != $event['username']) {
-            if (in_array($_SESSION['username'], $players) === true) {
+        if (isset($_SESSION['username'])) {
+            if ($_SESSION['username'] != $event['username']) {
+                if (in_array($_SESSION['username'], $players) === true) {
                 ?>
-                    <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
+                    <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-lg btn-warning">Se retirer</a>
                 <?php
                 } else {
                 ?>
-                    <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
+                    <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary btn-lg">Rejoindre cette table</a>
                 <?php
                 }
             }
-    } else {
-    ?>
-        <div class="alert alert-info text-center">
-            <strong><i class="fas fa-exclamation"></i> Attention: </strong>
-            Pour modifier votre présence, veuillez <a href="index.php?action=login">vous connecter.</a>
+        }
+        ?>
         </div>
-    <?php
-    }
-    ?>
+    </div>
 </div>
 
 <div class="card m-5 p-4 shadow bg-white rounded d-flex flex-column justify-content-center align-items-center">
@@ -60,8 +54,8 @@ ob_start(); ?>
                 </label>
                 <textarea id="comment" class="form-control mt-3 mb-4 shadow-sm" name="comment" placeholder="Saisissez ici votre commentaire" rows="3" maxlength="255" required></textarea>
             </div>
-            <div class="mt-3 mb-2">
-                <input type="submit" class="btn btn-primary btn-block"/>
+            <div class="mt-3 mb-2 d-flex justify-content-center align-items-center">
+                <input type="submit" class="btn btn-primary btn-lg"/>
             </div>
         </form>
         <?php

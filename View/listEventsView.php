@@ -1,29 +1,22 @@
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
-    <h1>Évènements à venir</h1>
+    <h1 class="m-2 p-3">Évènements à venir</h1>
     <div class="">
         <?php
         foreach ($events as $event)
         {
         ?>
-            <div class="card m-5 border-primary shadow">
+            <div class="card m-5 border-secondary shadow-lg">
                 <div class="card-header">
-                    <h2 class="card-title"><?= $event['eventName'] ?> - <small><?= $event['gameName']?></small></h2>
-                    <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />
-                        Organisé par <?= $event['username']?>
-                    </h5>
+                    <h2 class="card-title"><?= $event['eventName'] ?> — <small><?= $event['gameName']?></small></h2>
+
                 </div>
-                <!--
-                <div class="card-body">
-                    <p class="card-text"><?= nl2br($event['informations']) ?></p>
-                </div>
-                <div class="card-footer">
-                    <p>Participants:</p>
-                    <ul class="list-group">
-                        <li class="list-group-item">liste ici même</li>
-                    </ul>-->
-                <div>
-                    <a href="index.php?action=getEventById&event_id=<?= $event['event_id'] ?>" class="btn btn-primary m-2">En savoir plus</a>
+                    <div class="card-body">
+                        <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />
+                            Organisé par <?= $event['username']?>
+                        </h5>
+                        <a href="index.php?action=getEventById&event_id=<?= $event['event_id'] ?>" class="btn btn-lg btn-primary m-2">Plus d'infos</a>
+                    </div>
                 </div>
             </div>
     </div>
