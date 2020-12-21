@@ -83,8 +83,8 @@ class UsersController extends Controller
     }
     public function userDashboard()
     {
-        if (isset($_SESSION['userId'])) {
-            $userId = $_SESSION['userId'];
+        if (isset($_SESSION['user_id'])) {
+            $userId = $_SESSION['user_id'];
             $eventsManager = new EventsManager();
             $playersManager = new PlayersManager();
             $events = $eventsManager->listEventsById($userId);

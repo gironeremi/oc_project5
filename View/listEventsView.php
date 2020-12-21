@@ -31,10 +31,10 @@
         }
         ?>
     </div>
-    <nav>
+    <nav class="m-5 d-flex justify-content-center align-items-center">
         <ul class="pagination">
             <li class="page-item <?php if($currentPage == 1) { echo "disabled";} ?>">
-                <a href="index.php?action=listEvents&page=<?= $currentPage - 1 ?>" class="page-link">Précédent</a>
+                <a href="index.php?action=listEvents&page=<?= $currentPage - 1 ?>" class="page-link">&laquo;</a>
             </li>
             <?php
             for($page=1; $page<=$pages; $page++):
@@ -44,7 +44,7 @@
                 </li>
             <?php endfor ?>
             <li class="page-item <?php if($currentPage == $pages) { echo "disabled";} ?>">
-                <a href="index.php?action=listEvents&page=<?= $currentPage + 1 ?>" class="page-link">Suivant</a>
+                <a href="index.php?action=listEvents&page=<?= $currentPage + 1 ?>" class="page-link">&raquo;</a>
             </li>
         </ul>
     </nav>

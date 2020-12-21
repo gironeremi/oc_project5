@@ -6,9 +6,9 @@ class PlayersController extends Controller
 {
     public function addPlayer()
     {
-        if (isset($eventId) && isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
             $eventId = $this->cleanVar($_GET['event_id']);
-            $userId = $this->cleanVar($_SESSION['userId']);
+            $userId = $this->cleanVar($_SESSION['user_id']);
             if (empty($eventId) || (empty($userId))) {
                 throw new \Exception('Problème lors du traitement');
             } else {
@@ -24,9 +24,9 @@ class PlayersController extends Controller
 
     public function deletePlayer()
     {
-        if (isset($eventId) && isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
             $eventId = $this->cleanVar($_GET['event_id']);
-            $userId = $this->cleanVar($_SESSION['userId']);
+            $userId = $this->cleanVar($_SESSION['user_id']);
             if (empty($eventId) || (empty($userId))) {
                 throw new \Exception('Problème lors du traitement');
             } else {

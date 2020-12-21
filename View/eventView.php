@@ -24,15 +24,19 @@ ob_start(); ?>
     </ul>
     <?php
     if (isset($_SESSION['username'])) {
-        if (in_array($_SESSION['username'], $players) === true) {
-        ?>
-            <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
-        <?php
-        } else {
-        ?>
-            <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
-        <?php
-        }
+        //ajouter ici la condition: si l'orga = la personne conectée, ces boutons n'aparaissent pas...
+        //donc en fait c'est le contraire: si orga != personne, on affiche ces boutons.
+        if ($_SESSION['username'] != $event['username']) {
+            if (in_array($_SESSION['username'], $players) === true) {
+                ?>
+                    <a href="index.php?action=deletePlayer&event_id=<?=$event['event_id']?>" class="btn btn-warning">Se retirer</a>
+                <?php
+                } else {
+                ?>
+                    <a href="index.php?action=addPlayer&event_id=<?=$event['event_id']?>" class="btn btn-primary">Rejoindre cette table</a>
+                <?php
+                }
+            }
     } else {
     ?>
         <div class="alert alert-info text-center">

@@ -15,7 +15,7 @@ ob_start(); ?>
 <section>
     <h2>Jeux de rôle disponibles</h2>
     <h4>On en a plein!</h4>
-    <div class="card-deck">
+    <div class="">
         <?php
         foreach ($games as $game) {?>
             <div class="card">
