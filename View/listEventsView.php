@@ -6,7 +6,7 @@
         foreach ($events as $event)
         {
         ?>
-            <div class="card m-5">
+            <div class="card m-5 border-primary shadow">
                 <div class="card-header">
                     <h2 class="card-title"><?= $event['eventName'] ?> - <small><?= $event['gameName']?></small></h2>
                     <h5 class="card-subtitle mb-2 text-muted">le <?= $event['eventDate_fr'] ?> <br />

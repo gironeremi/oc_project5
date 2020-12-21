@@ -40,7 +40,7 @@ class EventsController extends Controller
     }
     public function getEventEditor()
     {
-        if (isset($_SESSION['userId'])) {
+        if (isset($_SESSION['user_id'])) {
             if (isset($_GET['event_id']) && $_GET['event_id'] > 0) {
                 $eventId = $this->cleanVar($_GET['event_id']);
                 $eventsManager = new EventsManager();

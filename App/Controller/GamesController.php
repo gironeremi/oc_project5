@@ -4,7 +4,6 @@ use App\Model\GamesManager;
 
 class GamesController extends Controller
 {
-    //ici ajout vérification de l'admin pour toutes les méthodes
     public function addGame()
     {
         if ($_SESSION['role'] === 'admin') {
@@ -20,6 +19,7 @@ class GamesController extends Controller
                 } else {
                     $successMessage = "Nouveau jeu de rôle ajouté!";
                     require('View/template.php');
+                    die();
                 }
             }
         } else {
@@ -42,6 +42,7 @@ class GamesController extends Controller
                 } else {
                     $successMessage = "Jeu de rôle modifié!";
                     require('View/template.php');
+                    die();
                 }
             }
         } else {
@@ -50,7 +51,7 @@ class GamesController extends Controller
     }
     public function deleteGame()
     {
-        if ($_SESSION['role'] === 'admin') {
+         if ($_SESSION['role'] === 'admin') {
             $gameId = $this->cleanVar($_GET['game_id']);
             $gamesManager = new GamesManager();
             $deleteGame = $gamesManager->deleteGame($gameId);

@@ -59,7 +59,7 @@ class UsersController extends Controller
             }
             if (empty($errors)) {
                 $_SESSION['username'] = $username;
-                $_SESSION['userId'] = $userExists['user_id'];
+                $_SESSION['user_id'] = $userExists['user_id'];
                 $_SESSION['role'] = $userExists['role'];
                 if ($_SESSION['role'] === 'admin') {
                     $adminController = new AdminController();
@@ -75,15 +75,11 @@ class UsersController extends Controller
     }
     public function logout()
     {
-        if (isset($_SESSION['userId'])) {
-            session_destroy();
-            unset($_SESSION['username']);
-            unset($_SESSION['userId']);
-            $successMessage = "Vous êtes bien déconnecté. Longue vie et prospérité!";
-            require('View/template.php');
-        }else {
-            throw new \Exception('Problème de déconnexion.');
-        }
+        session_destroy();
+        unset($_SESSION['username']);
+        unset($_SESSION['userId']);
+        $successMessage = "Vous êtes bien déconnecté. Longue vie et prospérité!";
+        require('View/template.php');
     }
     public function userDashboard()
     {
