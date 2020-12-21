@@ -75,19 +75,27 @@ class UsersController extends Controller
     }
     public function logout()
     {
-        session_destroy();
-        unset($_SESSION['username']);
-        unset($_SESSION['userId']);
-        $successMessage = "Vous êtes bien déconnecté. Longue vie et prospérité!";
-        require('View/template.php');
+        if (isset($_SESSION['userId'])) {
+            session_destroy();
+            unset($_SESSION['username']);
+            unset($_SESSION['userId']);
+            $successMessage = "Vous êtes bien déconnecté. Longue vie et prospérité!";
+            require('View/template.php');
+        }else {
+            throw new \Exception('Problème de déconnexion.');
+        }
     }
     public function userDashboard()
     {
-        $userId = $_SESSION['userId'];
-        $eventsManager = new EventsManager();
-        $playersManager = new PlayersManager();
-        $events = $eventsManager->listEventsById($userId);
-        $eventsReservations = $playersManager->listEventsByPlayer($userId);
-        require('View/userDashboardView.php');
+        if (isset($_SESSION['userId'])) {
+            $userId = $_SESSION['userId'];
+            $eventsManager = new EventsManager();
+            $playersManager = new PlayersManager();
+            $events = $eventsManager->listEventsById($userId);
+            $eventsReservations = $playersManager->listEventsByPlayer($userId);
+            require('View/userDashboardView.php');
+        } else {
+            throw new \Exception('Problème de connexion au tableau de bord');
+        }
     }
 }

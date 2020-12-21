@@ -6,29 +6,37 @@ class PlayersController extends Controller
 {
     public function addPlayer()
     {
-        $eventId = $this->cleanVar($_GET['event_id']);
-        $userId = $this->cleanVar($_SESSION['userId']);
-        if (empty($eventId) || (empty($userId))) {
-            throw new \Exception('Problème lors du traitement');
+        if (isset($eventId) && isset($_SESSION['user_id'])) {
+            $eventId = $this->cleanVar($_GET['event_id']);
+            $userId = $this->cleanVar($_SESSION['userId']);
+            if (empty($eventId) || (empty($userId))) {
+                throw new \Exception('Problème lors du traitement');
+            } else {
+                $playersManager = new PlayersManager();
+                $playersManager->addPlayer($eventId, $userId);
+                $successMessage = "Vous avez rejoint cette table!";
+                require('View/template.php');
+            }
         } else {
-            $playersManager = new PlayersManager();
-            $playersManager->addPlayer($eventId, $userId);
-            $successMessage = "Vous avez rejoint cette table!";
-            require('View/template.php');
+            throw new \Exception('problème lors du traitement des données.');
         }
     }
 
     public function deletePlayer()
     {
-        $eventId = $this->cleanVar($_GET['event_id']);
-        $userId = $this->cleanVar($_SESSION['userId']);
-        if (empty($eventId) || (empty($userId))) {
-            throw new \Exception('Problème lors du traitement');
+        if (isset($eventId) && isset($_SESSION['user_id'])) {
+            $eventId = $this->cleanVar($_GET['event_id']);
+            $userId = $this->cleanVar($_SESSION['userId']);
+            if (empty($eventId) || (empty($userId))) {
+                throw new \Exception('Problème lors du traitement');
+            } else {
+                $playersManager = new PlayersManager();
+                $playersManager->deletePlayer($eventId, $userId);
+                $successMessage = "Vous avez quitté cette table! L'organisateur va être triste :'(";
+                require('View/template.php');
+            }
         } else {
-            $playersManager = new PlayersManager();
-            $playersManager->deletePlayer($eventId, $userId);
-            $successMessage = "Vous avez quitté cette table! L'organisateur va être triste :'(";
-            require('View/template.php');
+            throw new \Exception('problème lors du traitement des données.');
         }
     }
 }
