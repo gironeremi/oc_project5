@@ -7,7 +7,7 @@ class GamesManager extends Manager
         $db = $this->getDbConnect();
         $req = $db->prepare('SELECT * FROM games');
         $req->execute();
-        return $req;
+        return $req->fetchAll();
     }
     public function getGameById($gameId)
     {
