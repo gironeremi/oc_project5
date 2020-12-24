@@ -23,11 +23,11 @@ class GamesManager extends Manager
         $req->execute();
         return $req;
     }
-    public function addGame($gameName, $style)
+    public function addGame($gameName, $style, $picture)
     {
         $db = $this->getDbConnect();
-        $req = $db->prepare('INSERT INTO games(gameName, style) VALUES (?,?)');
-        return $req->execute(array($gameName, $style));
+        $req = $db->prepare('INSERT INTO games(gameName, style, picture) VALUES (?,?,?)');
+        return $req->execute(array($gameName, $style, $picture));
     }
     public function updateGame($gameName, $style, $gameId)
     {

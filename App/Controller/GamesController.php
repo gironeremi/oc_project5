@@ -41,15 +41,16 @@ class GamesController extends Controller
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $successMessage = "Le fichier " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " a été transmis.";
+                    $picture = $_FILES["fileToUpload"]["name"];
                 } else {
                     throw  new \Exception('Désolé, le fichier n\'a pu être transmis.');
                 }
             }
-            if (empty($gameName) || empty($style)) {
+            if (empty($gameName) || empty($style) ||empty($picture)) {
                 throw new \Exception('Toutes les données ne sont pas saisies!');
             } else {
                 $gamesManager = new GamesManager();
-                $newGame = $gamesManager->addGame($gameName, $style);
+                $newGame = $gamesManager->addGame($gameName, $style, $picture);
                 if ($newGame === false) {
                     throw new \Exception('impossible d\'ajouter ce jeu!');
                 } else {

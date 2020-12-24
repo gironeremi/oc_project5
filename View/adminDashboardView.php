@@ -7,11 +7,12 @@
 foreach ($games as $game) {
     ?>
     <li class="list-group-item">
-        <h3><?= $game['gameName']?></h3>
-        <h4><?= $game['style'] ?></h4>
+        <h3><?= $game['gameName']; ?></h3>
+        <img src="/public/images/<?= $game['picture']; ?>" class="img-thumbnail"/>
+        <h4><?= $game['style']; ?></h4>
         <div>
-            <a href="index.php?action=getGameEditor&game_id=<?= $game['game_id'] ?>" class="btn btn-secondary m-2">Modifier</a>
-            <a href="index.php?action=deleteGame&game_id=<?= $game['game_id'] ?>" class="btn btn-danger m-2">Supprimer</a>
+            <a href="index.php?action=getGameEditor&game_id=<?= $game['game_id']; ?>" class="btn btn-secondary m-2">Modifier</a>
+            <a href="index.php?action=deleteGame&game_id=<?= $game['game_id']; ?>" class="btn btn-danger m-2">Supprimer</a>
         </div>
     </li>
 <?php

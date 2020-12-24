@@ -25,13 +25,18 @@
             <span id="styleHelpBlock" class="form-text text-muted">style de jeu, nature de l'univers, etc.</span>
         </div>
     </div>
-
-    <div class="form-group row p-2">
-        <div class="offset-4 col-8">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <span id="fileToUploadHelpBlock" class="form-text text-muted">Seulement des images, 500Ko maximum!</span>
+        <?php
+        if (empty($game)) {
+        ?>
+        <div class="form-group row p-2">
+            <div class="offset-4 col-8">
+                <input type="file" name="fileToUpload" id="fileToUpload" <?php if(empty($game)){ echo 'required';} ?> >
+                <span id="fileToUploadHelpBlock" class="form-text text-muted">Seulement des images, 500Ko maximum!</span>
+            </div>
         </div>
-    </div>
+        <?php
+        }
+        ?>
         <div class="form-group row p-2">
             <div class="offset-4 col-8">
                 <button name="submit" type="submit" class="btn btn-primary">Ajouter à la liste de jeux</button>

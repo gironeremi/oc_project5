@@ -23,30 +23,22 @@ ob_start(); ?>
 </section>
 <section>
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h2 class="mt-5 mb-2 text-center">Jeux de rôle disponibles</h2>
+        <h2 class="mt-5 mb-2 text-center">Quelques jeux de rôle disponibles</h2>
         <h4>On en a plein!</h4>
-        <div class="active card m-3 img-fluid shadow-lg" style="max-width: 800px">
-            <img src="/public/images/adc.jpg" class="card-img-top" alt="<?= $games['0']['1'] ?>"/>
+        <?php
+        foreach ($games as $game)
+        {
+        ?>
+            <div class="card m-3 img-fluid shadow-lg" style="max-width: 800px">
+            <img src="/public/images/<?= $game['picture']; ?>" class="card-img-top" alt="<?= $game['gameName']; ?>"/>
             <div class="card-img-overlay">
-                <div class="card-title"><h2><span class="badge badge-primary"><?= $games['0']['1'] ?></span></h2></div>
-                <div class="card-text text-white"><h5 class="font-weight-bold"><?= $games['0']['2']?>.</h5></div>
+                <div class="card-title"><h2><span class="badge badge-primary"><?= $game['gameName']; ?></span></h2></div>
+                <div class="card-text text-white"><h5 class="font-weight-bold"><?= $game['style']; ?></h5></div>
             </div>
         </div>
-        <div class="card m-3 img-fluid shadow-lg"  style="max-width: 800px">
-            <img src="/public/images/dnd.jpg" class="card-img-top" alt="<?= $games['1']['1'] ?>"/>
-            <div class="card-img-overlay">
-                <div class="card-title"><h2><span class="badge badge-primary"><?= $games['1']['1'] ?></span></h2></div>
-                <div class="card-text text-white"><h5 class="font-weight-bold"><?= $games['1']['2']?></h5></div>
-            </div>
-        </div>
-        <div class="card m-3 img-fluid shadow-lg"  style="max-width: 800px">
-            <img src="/public/images/sw.jpg" class="card-img-top" alt="<?= $games['2']['1']?>"/>
-            <div class="card-img-overlay">
-                <div class="card-title"><h2 class=""><span class="badge badge-primary"><?= $games['2']['1'] ?></span></h2></div>
-                <div class="card-text text-white"><h5 class="font-weight-bold"><?= $games['2']['2']?></h5></div>
-            </div>
-        </div>
-    </div>
+        <?php
+        }
+        ?>
 </section>
 <script type="text/javascript" src="../public/js/weather.js"></script>
 <script type="text/javascript" src="../public/js/main.js"></script>
