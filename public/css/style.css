@@ -8,11 +8,3 @@
 {
     display:none;
 }
-#arrow
-{
-    font-size: 50px;
-    position: fixed;
-    z-index: 5;
-    top:50px;
-    right:50px;
-}
