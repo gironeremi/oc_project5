@@ -16,15 +16,15 @@ ob_start(); ?>
         <?php
     }
     ?>
-    <h2>Connexion</h2>
+    <h1>Connexion</h1>
     <form method="post" action="" class="col-md-8 m-3 p-3 shadow-sm">
         <div class="form-group">
             <label for="username">Pseudo</label>
-            <input type="text" name="username" class="form-control" maxlength="30"/>
+            <input type="text" name="username" class="form-control" maxlength="30" required />
         </div>
         <div class="form-group">
             <label for="password">Mot de Passe</label>
-            <input type="password" name="password" class="form-control" maxlength="30"/>
+            <input type="password" name="password" class="form-control" maxlength="30" required />
             <button type="submit" class="btn btn-primary btn-block mt-4">Se connecter</button>
         </div>
     </form>

@@ -8,7 +8,7 @@ class CommentsController extends Controller
     {
         if (isset($_SESSION['user_id'])) {
             $eventId = $this->cleanVar($_GET['event_id']);
-            $userId = $this->cleanVar($_SESSION['userId']);
+            $userId = $this->cleanVar($_SESSION['user_id']);
             $comment = $this->cleanVar($_POST['comment']);
             if ($eventId > 0 && $userId > 0) {
                 if (!empty($comment)) {
@@ -19,6 +19,7 @@ class CommentsController extends Controller
                     } else {
                         $successMessage = 'Commentaire ajouté!';
                         require('View/template.php');
+                        die();
                     }
                 }
             } else {

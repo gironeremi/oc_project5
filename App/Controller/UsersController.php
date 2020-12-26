@@ -38,7 +38,7 @@ class UsersController extends Controller
             if (empty($errors)) {
                 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
                 $usersManager->addUser($username, $passwordHashed, $email);
-                $successMessage = 'Vous êtes à présent inscrit. Bienvenue dans la meute!';
+                $successMessage = 'Vous êtes à présent inscrit. Bienvenue chez "Rejoins Ma Table de Jeu"!';
                 require('View/template.php');
                 die();
             }

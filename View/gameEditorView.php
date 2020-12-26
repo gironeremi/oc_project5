@@ -1,5 +1,20 @@
 <?php $title = 'Éditeur de jeu'; ?>
 <?php ob_start(); ?>
+<?php
+if (!empty($errors)) { ?>
+    <div class="alert alert-danger col-md-8 m-3 p-3 shadow-sm">
+        <p>Soucis lors de la saisie des informations: </p>
+        <ul>
+            <?php foreach ($errors as $error) { ?>
+                <li><?= $error; ?></li>
+                <?php
+            }
+            ?>
+        </ul>
+    </div>
+    <?php
+}
+?>
     <form class="m-3 p-3 shadow" method="post" enctype="multipart/form-data" <?php
     if (!empty($game)) {?>
         action="index.php?action=updateGame&game_id=<?= $game['game_id'] ?>"

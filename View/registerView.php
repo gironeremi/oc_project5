@@ -16,23 +16,23 @@ ob_start(); ?>
         <?php
     }
     ?>
-    <h2>Inscription</h2>
+    <h1>Inscription</h1>
     <form action="" method="post" class="col-md-8 m-3 p-3 shadow-sm">
         <div class="form-group">
             <label for="username">Pseudonyme</label>
-            <input type="text" name="username" class="form-control" maxlength="30"/>
+            <input type="text" name="username" class="form-control" maxlength="30" required />
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" maxlength="50"/>
+            <input type="email" name="email" class="form-control" maxlength="50" required />
         </div>
         <div class="form-group">
             <label for="password">Mot de Passe</label>
-            <input type="password" name="password" class="form-control" maxlength="30"/>
+            <input type="password" name="password" class="form-control" maxlength="30" required />
         </div>
         <div class="form-group">
             <label for="passwordConfirm">Confirmation Mot de Passe</label>
-            <input type="password" name="passwordConfirm" class="form-control" maxlength="30"/>
+            <input type="password" name="passwordConfirm" class="form-control" maxlength="30" required />
         </div>
         <button type="submit" class="btn btn-primary btn-block">INSCRIPTION</button>
     </form>

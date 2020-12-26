@@ -24,7 +24,7 @@ class PlayersManager extends Manager
     public function listEventsByPlayer($userId)
     {
         $db =$this->getDbConnect();
-        $req = $db->prepare('SELECT events.*, DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN events_has_users ON events_has_users.event_id = events.event_id WHERE events_has_users.user_id = ?');
+        $req = $db->prepare('SELECT events.*, DATE_FORMAT(eventDate,\'%d/%m/%Y\')AS eventDate_fr FROM events INNER JOIN events_has_users ON events_has_users.event_id = events.event_id WHERE events_has_users.user_id = ? ORDER BY eventDate');
         $req->execute(array($userId));
         return $req->fetchAll();
     }

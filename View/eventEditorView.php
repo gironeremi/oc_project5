@@ -1,7 +1,7 @@
 <?php $title = 'Éditeur d\'Aventure'; ?>
 <?php ob_start(); ?>
 <div class="card m-5 p-4 shadow bg-white rounded d-flex flex-column justify-content-center align-items-center">
-    <h2>Séance de jeu</h2>
+    <h1>Séance de jeu</h1>
     <form method="post" class="form-group col-md-8 m-3 p-3 shadow-sm"
           <?php
           if(!empty($event)) {?>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <label for="eventInformations">Description de la séance : </label><br />
+        <label for="eventInformations">Description de la séance : <span class="text-muted">mettez un maximum d'informations pour vos joueurs</span></label><br />
         <p><textarea id="eventInformations" class="form-control" name="eventInformations" rows="15" maxlength="1000"><?php
             if(!empty($event['informations'])) {
                 echo strip_tags($event['informations']);

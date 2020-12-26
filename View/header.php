@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="index.php?action=listEvents">Prochaines Séances</a>
+                <a class="nav-link" href="index.php?action=listEvents">Séances</a>
             </li>
             <?php
                 if (isset($_SESSION['username'])) {
