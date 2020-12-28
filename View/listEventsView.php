@@ -1,6 +1,6 @@
 <?php $title = 'Séances'; ?>
 <?php ob_start(); ?>
-    <h1 class="m-2 p-3">Évènements à venir</h1>
+    <h1 class="m-2 p-3">Prochaines séances</h1>
     <div class="">
         <?php
         foreach ($events as $event)

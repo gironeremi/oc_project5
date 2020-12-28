@@ -10,7 +10,7 @@ ob_start(); ?>
     <img src="/public/images/logo.png" alt="logo RMTJ" class="img-fluid" />
 <div class="m-3">
     <h2 class="text-center">Qui sommes nous ?</h2>
-    <p>RMTJ est un club antibois de jeu de rôle. Il a été fondé en 2007 par amateur de jeux en tout genre. Le but de ce club est de présenter le jeu de rôle au grand public.</p>
+    <p>RMTJ est un club antibois de jeu de rôle. Il a été fondé en 2007 par Cédrick Ledorme, amateur de jeux en tout genre. Le but de ce club est de présenter le jeu de rôle au grand public.</p>
 </div>
 </section>
 <div class="m-3">
