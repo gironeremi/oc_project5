@@ -1,7 +1,7 @@
-#Projet n°5
+# Projet n°5
 Projet personnel de la formation Openclassrooms
 
-##Énoncé:
+## Énoncé:
 Pour ce projet, vous développerez l'application de votre choix en utilisant les 5 langages que vous avez appris : HTML, CSS, JS, PHP et SQL. L'approche visuelle et le thème sont entièrement libres.
 
 C'est donc le moment de faire preuve de créativité ! Démontrez votre savoir-faire et dédiez-y un effort substantiel, car ce projet rejoindra votre portfolio. Ce sera, plus que les autres projets, la touche personnelle de votre CV.
@@ -13,7 +13,7 @@ En manque d'inspiration ? Voici quelques idées, mais sachez que vous êtes fort
 * Un portfolio interactif sous forme de jeu vidéo
 Allez, vous allez trouver une idée bien à vous 😀
 
-##Livrables
+## Livrables
 * Code HTML, CSS, JS, PHP
 * Export MySQL de la base
 
@@ -22,14 +22,14 @@ Dans ce projet final, l’objectif est de démontrer que vous avez assimilé tou
 
 Pour vous aider à orienter vos choix, voici le détail de certaines des compétences listées ci-après. 
 
-###Organiser le code en langage PHP
+### Organiser le code en langage PHP
 - Charger automatique des classes ou utilisation de l'autoload de Composer
 - Séparer du code en respectant l'architecture MVC
 - Utiliser des exceptions pour gérer les erreurs
 - Utiliser des namespaces pour organiser les classes
 - Créer des templates HTML avec syntaxe PHP alternative ou Twig
 
-###Organiser et manipuler les données
+### Organiser et manipuler les données
 - Créer et manipuler une session
 - Valider des données côté serveur en PHP
 - Valider des données côté client en JavaScript
@@ -37,13 +37,13 @@ Pour vous aider à orienter vos choix, voici le détail de certaines des compét
 - Créer une pagination des données
 - Envoyer des fichiers au serveur
 
-###Sécuriser l'application
+### Sécuriser l'application
 - Supprimer des injections XSS dans les données saisies puis réaffichées
 - Supprimer des injections SQL avec PDO
 - Créer de mots de passes sécurisés avec un hachage fiable
 - Créer un système de login / logout
 
-##Soutenance
+## Soutenance
 Pour cette soutenance, vous devrez vous positionner comme un jeune développeur en fin de formation présentant son projet personnel au CTO d’une ESN (ex-SSII) lors d’un entretien de recrutement, pendant 25 minutes. Cette présentation sera suivie de 5 minutes de questions/réponses.
 
 ###Compétences évaluées
